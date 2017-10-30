@@ -9,5 +9,11 @@
 #include "delay.h"
 
 
-void init_buzzer();
-void buzz(int freq, int ms);
+void BuzzerInit();
+
+/**
+ *
+ * @param freq 0 - 100,000
+ * @param s 0 - 65,535
+ */
+void buzz(unsigned int freq, unsigned int s);

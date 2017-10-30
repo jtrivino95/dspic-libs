@@ -1,4 +1,4 @@
 void ADCInit();
 
-// Get instantaneous value
-void ADCGetValue();
+// Get instantaneous value (0 - 1023)
+short ADCGetValue();

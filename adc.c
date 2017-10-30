@@ -13,7 +13,7 @@ void ADCInit(){
   ADCON1bits.ADON = 1;           // turn ADC ON
 }
 
-void ADCGetValue(){
+short ADCGetValue(){
     int i; for (i = 0; i < 20; i++) Delay5ms();        // delay 100ms
     ADCON1bits.SAMP = 0;                               // start Converting
     while (!ADCON1bits.DONE);                          // wait for conversion done
