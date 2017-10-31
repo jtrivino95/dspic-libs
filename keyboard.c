@@ -17,7 +17,7 @@
 #define ON 0
 #define OFF 1
 
-void KeyboardInit(){
+void keyboardInit(){
     TRISBbits.TRISB0 = OUTPUT;
     TRISBbits.TRISB1 = OUTPUT;
     TRISBbits.TRISB2 = OUTPUT;

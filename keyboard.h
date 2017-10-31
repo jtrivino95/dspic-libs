@@ -5,6 +5,6 @@
  * Created on 25 de septiembre de 2017, 18:54
  */
 
-void KeyboardInit();
+void keyboardInit();
 int wait_for_key_press();
 int get_pressed_key();

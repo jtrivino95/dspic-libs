@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   buzzer.h
  * Author: jtm648
  *
@@ -17,3 +17,7 @@ void BuzzerInit();
  * @param s 0 - 65,535
  */
 void buzz(unsigned int freq, unsigned int s);
+
+void buzzerOn();
+void buzzerOff();
+char isBuzzerStateOn();
