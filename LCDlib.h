@@ -6,6 +6,7 @@
 #define CHAR_PATTERN_CELL_5 5
 #define CHAR_PATTERN_CELL_6 6
 
+
 // Initialize LCD
 void LCDInit();
 

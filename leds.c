@@ -1,6 +1,7 @@
 #include <p30F4011.h>
 #include "leds.h"
 
+
 #define LED0 LATEbits.LATE0
 #define LED1 LATEbits.LATE1
 #define LED2 LATEbits.LATE2
@@ -10,6 +11,7 @@
 
 #define INPUT 1
 #define OUTPUT 0
+
 
 void init_leds(){
     TRISEbits.TRISE0 = OUTPUT;

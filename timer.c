@@ -1,16 +1,20 @@
 #include "timer.h"
 #include <p30f4011.h>
 #include <math.h>
+#include "delay.h"
 
 
-void timerInit(float freq){
+#define FREQ_INTERNAL_CLOCK 29491200
+#define INTERNAL_CLOCK_INDEX 0
+#define PRESCALING_FACTOR 64
+#define PRESCALING_FACTOR_INDEX 2
 
-    signed long frecuencia_reloj_interno = 29491200;
-    signed int
-            factor_preescalado = 64,
-            index_preescalado = 2,
-            valor_a_alcanzar = ceilf(frecuencia_reloj_interno / (freq * factor_preescalado)),
-            half_valor_a_alcanzar = valor_a_alcanzar / 2;
+
+void timerConfig(unsigned float freq){
+
+    unsigned int
+            max_counter_value = ceilf(FREQ_INTERNAL_CLOCK / (freq * PRESCALING_FACTOR)),
+            half_max_counter_value = max_counter_value / 2;
 
     // Configurar interrupciones
     IEC0bits.T1IE = 1; // Activar interrupción timer 1
@@ -19,10 +23,10 @@ void timerInit(float freq){
 
     // Configurar el registro de control del timer 1
     T1CON = 0x000; // timer parado, sin pre-escalado y reloj interno
-    T1CONbits.TCKPS = index_preescalado; // 1:64    // TODO: (Si se usan distintos preescalados para cada freq, se gana precision)
-    T1CONbits.TCS = 0; // Interna, 30 MHz, 29491200 Hz
+    T1CONbits.TCKPS = PRESCALING_FACTOR_INDEX;
+    T1CONbits.TCS = INTERNAL_CLOCK_INDEX;
     TMR1 = 0x0000; // Limpiar registro contador
-    PR1 = half_valor_a_alcanzar;
+    PR1 = half_max_counter_value;
     
 }
 
@@ -32,5 +36,15 @@ void timerStart(){
 
 void timerStop(){
   T1CONbits.TON = 0;
-  TMR1 = 0x0000; // mejor en timerStart??
+  TMR1 = 0x0000;
+}
+
+void timerPlay(unsigned float freq, unsigned int ms){
+  T1CONbits.TON = 1;
+
+  unsigned int wait_periods = (freq * ms) / 200;
+  for (int i = 0; i < wait_periods; ++i) delay10us();
+
+  T1CONbits.TON = 0;
+  TMR1 = 0x0000;
 }

@@ -6,6 +6,7 @@
 #define ON 0
 #define OFF 1
 
+
 void buzzerInit(){
     TRISBbits.TRISB7 = OUTPUT;
 }

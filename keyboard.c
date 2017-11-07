@@ -2,6 +2,7 @@
 #include "delay.h"
 #include "keyboard.h"
 
+
 #define COLUMNA0   LATBbits.LATB0
 #define COLUMNA1   LATBbits.LATB1
 #define COLUMNA2   LATBbits.LATB2
@@ -16,6 +17,7 @@
 
 #define ON 0
 #define OFF 1
+
 
 void keyboardInit(){
     TRISBbits.TRISB0 = OUTPUT;

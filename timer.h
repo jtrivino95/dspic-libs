@@ -1,5 +1,4 @@
-void timerInit(float freq);
-
+void timerConfig(unsigned float freq);
 void timerStart();
 void timerStop();
-void timerReset();
+void timerPlay(unsigned float freq, unsigned int ms);
