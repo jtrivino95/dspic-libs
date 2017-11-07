@@ -10,7 +10,7 @@
 #define PRESCALING_FACTOR_INDEX 2
 
 
-void timerConfig(unsigned float freq){
+void timerConfig(float freq){
 
     unsigned int
             max_counter_value = ceilf(FREQ_INTERNAL_CLOCK / (freq * PRESCALING_FACTOR)),
@@ -39,11 +39,12 @@ void timerStop(){
   TMR1 = 0x0000;
 }
 
-void timerPlay(unsigned float freq, unsigned int ms){
+void timerPlay(float freq, unsigned int ms){
   T1CONbits.TON = 1;
 
   unsigned int wait_periods = (freq * ms) / 200;
-  for (int i = 0; i < wait_periods; ++i) delay10us();
+  int i;
+  for (i = 0; i < wait_periods; ++i) Delay10us();
 
   T1CONbits.TON = 0;
   TMR1 = 0x0000;

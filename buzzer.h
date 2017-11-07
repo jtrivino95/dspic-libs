@@ -1,8 +1,7 @@
-/#include <p30F4011.h>
+#include <p30F4011.h>
 #include "delay.h"
 
-
-void BuzzerInit();
+void buzzerInit();
 
 /**
  *
