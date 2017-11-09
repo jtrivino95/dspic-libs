@@ -1,7 +1,9 @@
 #include "buzzer.h"
+#include "delay.h"
+#include <p30F4011.h>
+
 
 #define OUTPUT 0
-#define INPUT 1
 #define ON 0
 #define OFF 1
 

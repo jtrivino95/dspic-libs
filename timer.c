@@ -1,7 +1,6 @@
 #include "timer.h"
 #include <p30f4011.h>
-#include <math.h>
-#include "delay.h"
+#include <stdio.h>
 
 
 #define FREQ_INTERNAL_CLOCK 29491200
@@ -11,9 +10,8 @@
 
 
 void timerConfig(float freq){
-
     unsigned int
-            max_counter_value = ceilf(FREQ_INTERNAL_CLOCK / (freq * PRESCALING_FACTOR)),
+            max_counter_value = FREQ_INTERNAL_CLOCK / (freq * PRESCALING_FACTOR),
             half_max_counter_value = max_counter_value / 2;
 
     // Configurar interrupciones
@@ -26,8 +24,7 @@ void timerConfig(float freq){
     T1CONbits.TCKPS = PRESCALING_FACTOR_INDEX;
     T1CONbits.TCS = INTERNAL_CLOCK_INDEX;
     TMR1 = 0x0000; // Limpiar registro contador
-    PR1 = half_max_counter_value;
-    
+    PR1 = half_max_counter_value;   
 }
 
 void timerStart(){
@@ -35,17 +32,6 @@ void timerStart(){
 }
 
 void timerStop(){
-  T1CONbits.TON = 0;
-  TMR1 = 0x0000;
-}
-
-void timerPlay(float freq, unsigned int ms){
-  T1CONbits.TON = 1;
-
-  unsigned int wait_periods = (freq * ms) / 200;
-  int i;
-  for (i = 0; i < wait_periods; ++i) Delay10us();
-
   T1CONbits.TON = 0;
   TMR1 = 0x0000;
 }

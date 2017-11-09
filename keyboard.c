@@ -1,6 +1,6 @@
+#include "keyboard.h"
 #include <p30F4011.h>
 #include "delay.h"
-#include "keyboard.h"
 
 
 #define COLUMNA0   LATBbits.LATB0
@@ -30,7 +30,7 @@ void keyboardInit(){
     TRISDbits.TRISD3 = INPUT;
 }
 
-int wait_for_key_press(){
+short wait_for_key_press(){
     int key = -1;
     
     while(key < 0){
@@ -40,7 +40,7 @@ int wait_for_key_press(){
     return key;
 }
 
-int get_pressed_key(){
+short get_pressed_key(){
         COLUMNA0 = ON;
         COLUMNA1 = OFF;
         COLUMNA2 = OFF;
