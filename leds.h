@@ -9,6 +9,6 @@
 #define LED_OFF 0
 
 
-void init_leds();
-void set_led(int nled, int status);
+void initLeds();
+void setLed(int nled, int status);
 void toggle(int nled);

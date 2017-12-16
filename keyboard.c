@@ -30,7 +30,7 @@ void keyboardInit(){
     TRISDbits.TRISD3 = INPUT;
 }
 
-short wait_for_key_press(){
+short waitForKeyPress(){
     int key = -1;
     
     while(key < 0){
@@ -40,7 +40,7 @@ short wait_for_key_press(){
     return key;
 }
 
-short get_pressed_key(){
+short getPressedKey(){
         COLUMNA0 = ON;
         COLUMNA1 = OFF;
         COLUMNA2 = OFF;

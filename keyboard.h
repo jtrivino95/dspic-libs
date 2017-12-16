@@ -16,11 +16,11 @@ void keyboardInit();
  * la pulsación de una tecla. Devuelve un
  * entero correspondiente al número de tecla.
  */
-short wait_for_key_press();
+short waitForKeyPress();
 
 /* 
  * Devuelve el entero correspondiente a la tecla pulsada
  * en ese instante.
  * Si no hay pulsada ninguna tecla, devuelve el valor -1.
  */
-short get_pressed_key();
+short getPressedKey();

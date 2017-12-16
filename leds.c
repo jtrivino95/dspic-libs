@@ -13,7 +13,7 @@
 #define OUTPUT 0
 
 
-void init_leds(){
+void initLeds(){
     TRISEbits.TRISE0 = OUTPUT;
     TRISEbits.TRISE1 = OUTPUT;
     TRISEbits.TRISE2 = OUTPUT;
@@ -29,7 +29,7 @@ void init_leds(){
     LED5 = LED_OFF;
 }
 
-void set_led(int nled, int status){
+void setLed(int nled, int status){
     switch(nled){
         case 0:
             LED0 = status;
