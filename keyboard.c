@@ -34,7 +34,7 @@ short waitForKeyPress(){
     short key = -1;
     
     while(key < 0){
-        key = get_pressed_key();
+        key = getPressedKey();
     }
 
     return key;

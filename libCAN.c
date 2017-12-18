@@ -39,14 +39,14 @@ void initCAN() {
     while (C1CTRLbits.OPMODE != 0b000); // Wait until normal mode
 }
 
-void transmitCAN(unsigned char *data, unsigned short datalength) {
+void transmitCAN(unsigned int sid, unsigned char * data, unsigned short datalength) {
     /* Tx buffer 0 */
     C1TX0DLCbits.TXRTR = 0; // Set data frame
     C1TX0SIDbits.TXIDE = 0; // Set standard identifier
-    // Set identifier 1
-    C1TX0SIDbits.SID5_0 = 0; // Set the lowest 6 bits
-    C1TX0SIDbits.SID10_6 = 1; // Set the highest 5 bits
-    C1TX0DLCbits.DLC = datalength; // DLC 1 byte
+    // Set identifier
+    C1TX0SIDbits.SID5_0 = sid & 0b0000000000111111; // Set the lowest 6 bits
+    C1TX0SIDbits.SID10_6 = (sid & 0b0000011111000000) >> 6; // Set the highest 5 bits
+    C1TX0DLCbits.DLC = datalength; // DLC
 
     switch (datalength) {
         case 8:
