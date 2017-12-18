@@ -11,4 +11,3 @@
 
 void initLeds();
 void setLed(int nled, int status);
-void toggle(int nled);

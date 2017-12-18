@@ -1,8 +1,8 @@
-#include "libCAN.h"
-#include <p30f4011.h>
-
-#include "LCDlib.h"
 #include <stdio.h>
+#include <p30f4011.h>
+#include "libCAN.h"
+#include "LCDlib.h"
+
 
 void initCAN() {
     C1CTRLbits.REQOP = 0b100; // Set configuration mode
@@ -39,7 +39,7 @@ void initCAN() {
     while (C1CTRLbits.OPMODE != 0b000); // Wait until normal mode
 }
 
-void transmitCAN(unsigned char * data, unsigned short datalength) {
+void transmitCAN(unsigned char *data, unsigned short datalength) {
     /* Tx buffer 0 */
     C1TX0DLCbits.TXRTR = 0; // Set data frame
     C1TX0SIDbits.TXIDE = 0; // Set standard identifier

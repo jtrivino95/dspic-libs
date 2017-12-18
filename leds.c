@@ -51,26 +51,3 @@ void setLed(int nled, int status){
             break;
     }
 }
-
-void toggle(int nled){
-    switch(nled){
-        case 0:
-            LED0 = ~LED0;
-            break;
-        case 1:
-            LED1 = ~LED1;
-            break;
-        case 2:
-            LED2 = ~LED2;
-            break;
-        case 3:
-            LED3 = ~LED3;
-            break;
-        case 4:
-            LED4 = ~LED4;
-            break;
-        case 5:
-            LED5 = ~LED5;
-            break;
-    }
-}
