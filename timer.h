@@ -1,13 +1,12 @@
-/*
- * Configura el timer de modo que geneŕará
- * una interrupción cada 1/$freq segundos cuando
- * esté activado.
- * $freq no puede superar el valor de 460800 Hz
- */
-void timerConfig(float freq);
+void timerInit(void);
+
+void timerConfig(
+    unsigned int max_counter_value,
+    unsigned char prescaling_factor,
+    unsigned char priority);
 
 // Activa el timer.
-void timerStart();
+void timerStart(void);
 
 // Desactiva el timer.
-void timerStop();
+void timerStop(void);
