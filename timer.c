@@ -1,13 +1,8 @@
 #include <p30f4011.h>
 #include "timer.h"
 
-
 #define FREQ_INTERNAL_CLOCK 29491200
 #define INTERNAL_CLOCK 0
-#define PRESCALING_FACTOR_1 0
-#define PRESCALING_FACTOR_8 1
-#define PRESCALING_FACTOR_64 2
-#define PRESCALING_FACTOR_256 3
 
 // Configurar el registro de control del timer 1
 void timerInit(void){
@@ -16,7 +11,7 @@ void timerInit(void){
 
     TMR1 = 0x0000;
 
-    T1CONbits.TCS = INTERNAL_CLOCK_INDEX;
+    T1CONbits.TCS = INTERNAL_CLOCK;
 
     IEC0bits.T1IE = 1; // Activar interrupción timer 1
     IFS0bits.T1IF = 0; // Limpiar flag de estado

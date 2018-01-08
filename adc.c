@@ -3,7 +3,7 @@
 #include "adc.h"
 
 
-void ADCInit(){
+void ADCInit(void){
   ADPCFG = 0xFF7F;               // all PORTB = Digital; RB2 = analog
   ADCON1 = 0x0004;               // SAMP bit = 0 ends sampling ...
   ADCHS  = 0x0007;              // Connect RB2/AN7 as CH0 input
@@ -13,7 +13,7 @@ void ADCInit(){
   ADCON1bits.ADON = 1;           // turn ADC ON
 }
 
-short ADCGetValue(){
+short ADCGetValue(void){
     int i; for (i = 0; i < 20; i++) Delay5ms();        // delay 100ms
     ADCON1bits.SAMP = 0;                               // start Converting
     while (!ADCON1bits.DONE);                          // wait for conversion done
