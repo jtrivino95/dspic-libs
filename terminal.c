@@ -48,3 +48,11 @@ void uartImprimir(char c) {
 char uartGetUltimaTecla(void){
     return ReadUART1();
 }
+
+void uartImprimirString(char *str){
+    int i = 0;
+    while(str[i] != '\0'){
+        uartImprimir(str[i]);
+        ++i;
+    }
+}
